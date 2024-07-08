@@ -1,3 +1,5 @@
+// /src/app/TransferCrypto/page.jsx
+
 "use client";
 import HeaderLogo from "../../components/HeaderLogo";
 import React, { useState } from "react";
@@ -28,7 +30,7 @@ const TransferCrypto = () => {
               className="block text-sm font-medium"
               htmlFor="walletaddress"
             >
-              Recipient's Wallet Address
+              Recipient&apos;s Wallet Address
             </label>
             <input
               type="text"
@@ -85,13 +87,13 @@ const TransferCrypto = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                class="size-6 ml-2"
+                className="size-6 ml-2"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                 />
               </svg>

@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import HeaderLogo from "../../components/HeaderLogo";
+import Footer from "@/components/Footer";
 
 const Home = () => {
   const router = useRouter();
@@ -37,9 +38,7 @@ const Home = () => {
           </button>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 text-center opacity-70 p-5">
-        <p className="text-customFontColor">© Ultimate Digits 2024</p>
-      </div>
+      <Footer />
     </div>
   );
 };

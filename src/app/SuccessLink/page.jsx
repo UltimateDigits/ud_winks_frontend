@@ -36,7 +36,7 @@ const SuccessLink = () => {
         </div>
         <div className="w-[350px] md:w-[455px] mt-[34px] bg-gradient-to-br from-customStart1 to-customEnd2 rounded mx-auto">
           <div className=" p-6">
-            <Image className=" w-[118px] h-[18px]" src={HeadLogo} />
+            <Image alt="Header Logo" className=" w-[118px] h-[18px]" src={HeadLogo} />
             <p className=" text-[16px] font-bold pt-[30px]">
               https://ultimatewinks/000001
             </p>
