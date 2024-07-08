@@ -6,7 +6,7 @@ import Image from "next/image";
 const HeaderLogo = () => {
   return (
     <div>
-      <div className="pt-16">
+      <div className="pt-10">
         <Image
           src={HeadLogo}
           alt="Header Logo"
