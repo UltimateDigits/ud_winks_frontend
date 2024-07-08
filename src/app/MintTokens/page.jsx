@@ -92,7 +92,7 @@ const MintToken = () => {
               className="w-[350px] md:w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
               onClick={() => router.push("/SuccessLink")}
             >
-              Create
+              Create Wink
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -111,7 +111,7 @@ const MintToken = () => {
           </div>
         </div>
       </div>
-      <div className=" text-center p-5 opacity-70">
+      <div className=" text-center p-2 md:p-5 opacity-70">
         <p className="text-customFontColor">© Ultimate Digits 2024</p>
       </div>
     </div>
