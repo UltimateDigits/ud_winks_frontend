@@ -10,7 +10,7 @@ const Home = () => {
       <div className="items-center mx-auto pt-[16px]">
         <div className="text-center">
           <p className="text-[30px] font-bold">Create your shareable link</p>
-          <p className="pt-[8px]">Welcome back to Ultimate Winks</p>
+          <p className="pt-[8px] text-customFontColor">Welcome back to Ultimate Winks</p>
         </div>
         <div className="w-[455px] mx-auto pt-[34px] space-y-4 text-[16px] font-bold">
           <button
@@ -27,7 +27,7 @@ const Home = () => {
           </button>
           <button
             className="w-[455px] h-[48px] border-2 border-customBorder hover:bg-blue-950 rounded-[32px]"
-            onClick={() => navigateTo("/SwapTokens")}
+            onClick={() => router.push("/SwapTokens")}
           >
             Swap Tokens
           </button>

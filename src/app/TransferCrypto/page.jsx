@@ -16,7 +16,7 @@ const TransferCrypto = () => {
       <div className="items-center mx-auto pt-[16px]">
         <div className="text-center">
           <p className="text-[30px] font-bold">Transfer</p>
-          <p className="pt-[8px]">
+          <p className="pt-[8px] text-customFontColor">
             Send cryptocurrency securely to any wallet address. Choose the
             blockchain, specify the amount, and transfer instantly.
           </p>
@@ -35,6 +35,7 @@ const TransferCrypto = () => {
               className="bg-gray-800 border border-gray-700 rounded w-full h-[44px] p-2 text-white"
               placeholder="john@gmail.com"
               value={address}
+              required
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
@@ -48,6 +49,7 @@ const TransferCrypto = () => {
               value={blockchain}
               onChange={(e) => setBlockchain(e.target.value)}
               defaultValue=" Ethereum"
+              required
             >
               <option value="" disabled>
                 Select Blockchain
@@ -68,29 +70,32 @@ const TransferCrypto = () => {
               className="bg-gray-800 border border-gray-700 rounded w-full h-[44px] p-2 text-white"
               placeholder="00"
               value={amount}
+              required
               onChange={(e) => setAmount(e.target.value)}
             />
           </div>
-          <button
-            className="w-[455px] h-[48px] bg-customBorder font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
-            onClick={() => navigateTo("/SwapTokens")}
-          >
-            Transfer
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6 ml-2"
+          <div className=" py-3">
+            <button
+              className="w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
+              onClick={() => router.push("/TransferError")}
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-              />
-            </svg>
-          </button>
+              Transfer
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6 ml-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
