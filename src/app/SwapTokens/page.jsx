@@ -18,7 +18,7 @@ const MintToken = () => {
         <div className="text-center">
           <p className=" text-[24px] md:text-[30px] font-bold">Swap Tokens</p>
           <p className="pt-[8px] text-customFontColor">
-            Exchange one type of cryptocurrency for another. Choose from popular
+            Exchange one type of cryptocurrency for another. Choose from popular <br className=" hidden md:flex lg:hidden" />
             blockchains and swap efficiently with real-time conversion rates.
           </p>
         </div>
