@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import HeaderLogo from "../../components/HeaderLogo";
+import Footer from "@/components/Footer";
 
 const TransferError = () => {
   const router = useRouter();
@@ -10,13 +11,13 @@ const TransferError = () => {
       <HeaderLogo />
       <div className="items-center mx-auto pt-[16px]">
         <div className="text-center">
-          <p className="text-[30px] font-bold">Transfer</p>
+          <p className=" text-[24px] md:text-[30px] font-bold">Transfer</p>
           <p className="pt-[8px] text-customFontColor">
             Send cryptocurrency securely to any wallet address. Choose the
             blockchain, specify the amount, and transfer instantly.
           </p>
         </div>
-        <div className=" w-[455px] mt-[34px] bg-customGrayFill border-2 border-customGrayStroke text-center rounded mx-auto">
+        <div className=" w-[350px] md:w-[455px] mt-[34px] bg-customGrayFill border-2 border-customGrayStroke text-center rounded mx-auto">
           <div className=" p-6">
             <p className=" flex justify-center items-center gap-2 font-medium text-[20px]">
               <svg
@@ -41,7 +42,7 @@ const TransferError = () => {
         </div>
         <div className=" py-6">
           <button
-            className="w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center mx-auto items-center"
+            className="w-[350px] md:w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center mx-auto items-center"
             onClick={() => router.push("/TransferCrypto")}
           >
             <svg
@@ -62,6 +63,7 @@ const TransferError = () => {
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

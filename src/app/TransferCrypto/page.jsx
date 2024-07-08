@@ -2,6 +2,7 @@
 import HeaderLogo from "../../components/HeaderLogo";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Footer from "@/components/Footer";
 
 const TransferCrypto = () => {
   const router = useRouter();
@@ -15,13 +16,13 @@ const TransferCrypto = () => {
       <HeaderLogo />
       <div className="items-center mx-auto pt-[16px]">
         <div className="text-center">
-          <p className="text-[30px] font-bold">Transfer</p>
+          <p className=" text-[24px] md:text-[30px] font-bold">Transfer</p>
           <p className="pt-[8px] text-customFontColor">
             Send cryptocurrency securely to any wallet address. Choose the
             blockchain, specify the amount, and transfer instantly.
           </p>
         </div>
-        <div className="w-[455px] mx-auto pt-[34px] space-y-4 text-[16px]">
+        <div className="w-[350px] md:w-[455px] mx-auto pt-[34px] space-y-4 text-[16px]">
           <div className="">
             <label
               className="block text-sm font-medium"
@@ -76,7 +77,7 @@ const TransferCrypto = () => {
           </div>
           <div className=" py-3">
             <button
-              className="w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
+              className="w-[350px] md:w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
               onClick={() => router.push("/TransferError")}
             >
               Transfer
@@ -98,6 +99,7 @@ const TransferCrypto = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

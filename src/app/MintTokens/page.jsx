@@ -16,13 +16,13 @@ const MintToken = () => {
       <HeaderLogo />
       <div className="items-center mx-auto pt-[16px]">
         <div className="text-center">
-          <p className="text-[30px] font-bold">Mint Tokens</p>
+          <p className=" text-[24px] md:text-[30px] font-bold">Mint Tokens</p>
           <p className="pt-[8px] text-customFontColor">
             Create your own tokens by specifying a contract address and ABI
-            details. Select your preferred blockchain to mint tokens.
+            details. <br className=" hidden md:flex lg:hidden" /> Select your preferred blockchain to mint tokens.
           </p>
         </div>
-        <div className="w-[455px] mx-auto pt-[34px] space-y-4 text-[16px]">
+        <div className="w-[350px] md:w-[455px] mx-auto pt-[34px] space-y-4 text-[16px]">
           <div className="">
             <label
               className="block text-sm font-medium"
@@ -89,7 +89,7 @@ const MintToken = () => {
           </div>
           <div className=" py-3">
             <button
-              className="w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
+              className="w-[350px] md:w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
               onClick={() => router.push("/SuccessLink")}
             >
               Create
@@ -110,6 +110,9 @@ const MintToken = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className=" text-center p-5 opacity-70">
+        <p className="text-customFontColor">© Ultimate Digits 2024</p>
       </div>
     </div>
   );

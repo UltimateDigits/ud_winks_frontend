@@ -4,6 +4,7 @@ import HeaderLogo from "../../components/HeaderLogo";
 import HeadLogo from "../../assets/HeaderLogo.png";
 import Image from "next/image";
 import React from "react";
+import Footer from "@/components/Footer";
 
 const SuccessLink = () => {
   const router = useRouter();
@@ -27,13 +28,13 @@ const SuccessLink = () => {
       <HeaderLogo />
       <div className="items-center mx-auto pt-[16px]">
         <div className="text-center">
-          <p className="text-[30px] font-bold">Link Created Successfully!</p>
-          <p className="pt-[8px] text-customFontColor w-[455px] mx-auto">
+          <p className=" text-[24px] md:text-[30px] font-bold">Link Created Successfully!</p>
+          <p className="pt-[8px] text-customFontColor md:w-[455px] mx-auto">
             Your link is ready to share. Click on one of the platforms below to
             start sharing:
           </p>
         </div>
-        <div className="w-[455px] mt-[34px] bg-gradient-to-br from-customStart1 to-customEnd2 rounded mx-auto">
+        <div className="w-[350px] md:w-[455px] mt-[34px] bg-gradient-to-br from-customStart1 to-customEnd2 rounded mx-auto">
           <div className=" p-6">
             <Image className=" w-[118px] h-[18px]" src={HeadLogo} />
             <p className=" text-[16px] font-bold pt-[30px]">
@@ -43,7 +44,7 @@ const SuccessLink = () => {
         </div>
         <div className=" py-6">
           <button
-            className="w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center mx-auto"
+            className="w-[350px] md:w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center mx-auto"
             onClick={handleShareLink}
           >
             Share Link
@@ -64,6 +65,7 @@ const SuccessLink = () => {
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
