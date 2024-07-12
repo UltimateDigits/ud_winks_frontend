@@ -5,13 +5,32 @@ import HeaderLogo from "../../components/HeaderLogo";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/Footer";
-
+import axios from "axios";
 const TransferCrypto = () => {
   const router = useRouter();
 
   const [address, setAddress] = useState();
   const [amount, setAmount] = useState();
   const [blockchain, setBlockchain] = useState();
+
+  const createWink =async () => {
+console.log("Address", address);
+console.log("amount", amount);
+console.log("chain", blockchain);
+
+try {
+  const res = await axios.post("http://localhost:3001/create-link",{
+    walletAddress:address, amount:amount, chainDetails:blockchain, type:"1"
+  })
+
+  console.log(res)
+  if(res.status === 200){
+    console.log(res.data);
+  }
+} catch (error) {
+  console.log("error in creating link");
+}
+  }
 
   return (
     <div className="bg-gradient-to-t from-customStart via-customStart to-blue-950 min-h-screen">
@@ -57,10 +76,10 @@ const TransferCrypto = () => {
               <option value="" disabled>
                 Select Blockchain
               </option>
-              <option value="Community1">Ethereum</option>
-              <option value="Community2">Ethereum</option>
-              <option value="Community3">Ethereum</option>
-              <option value="Community4">Ethereum</option>
+              <option value="Base">Base</option>
+              <option value="Ethereum">Ethereum</option>
+              <option value="Polygon">Polygon</option>
+              <option value="Degen">Degen</option>
             </select>
           </div>
           <div className="">
@@ -80,7 +99,7 @@ const TransferCrypto = () => {
           <div className=" py-3">
             <button
               className="w-[350px] md:w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
-              onClick={() => router.push("/SuccessLink")}
+              onClick={() => createWink()}
             >
               Create Wink
               <svg
