@@ -8,34 +8,62 @@ import Footer from "@/components/Footer";
 import axios from "axios";
 import { setUserData } from "../UserSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import '@rainbow-me/rainbowkit/styles.css';
+import { useAccount, useEnsName } from 'wagmi'
+import { ethers } from "ethers";
 
-const TransferCrypto = () => {
+import {
+    useConnectModal,
+    useAccountModal,
+    useChainModal,
+  } from '@rainbow-me/rainbowkit';
+const TransferCrypto = (data) => {
+    const { openConnectModal } = useConnectModal();
+    const { openAccountModal } = useAccountModal();
+    const { openChainModal } = useChainModal();
   const router = useRouter();
   const userr = useSelector((state) => state.userdata);
   const dispatch = useDispatch();
-  const [address, setAddress] = useState();
+//   const [address, setAddress] = useState();
   const [amount, setAmount] = useState();
   const [blockchain, setBlockchain] = useState();
+  const { address } = useAccount()
 
+console.log("data",data);
   const createWink =async () => {
-console.log("Address", address);
-console.log("amount", amount);
-console.log("chain", blockchain);
+console.log("Address", data.data.walletAddress);
+console.log("amount", data.data.amount);
+console.log("chain", data.data.blockchain);
 
 try {
-  const res = await axios.post("http://localhost:3001/create-link",{
-    walletAddress:address, amount:amount, chainDetails:blockchain, type:"1"
-  })
+    try {
+        if(!address){
+            openConnectModal()
 
-  console.log(res)
-  if(res.status === 200){
-    console.log(res.data);
-    dispatch(setUserData({ address: "SDgwegwefgwe", link: res.data.link, type: "sdfsdfsdf" }));
-    router.push("/SuccessLink")
+        }
+    } catch (error) {
+        console.log("error");
+    }
 
-  }
+    const provider = window.ethereum != null ? new ethers.providers.Web3Provider(window.ethereum) : ethers.providers.getDefaultProvider();
+    console.log("provider",provider)
+    
+        //signer
+    
+        const signer = provider.getSigner();
+    
+    console.log("signer",signer)
+
+    const tx = await signer.sendTransaction({
+        to: data.data.walletAddress,
+        value: ethers.utils.parseEther(data.data.amount.toFixed(10).toString()),
+      });
+
+      console.log("tx",tx);
+      await tx.wait();
 } catch (error) {
-  console.log("error in creating link");
+  console.log("error in creating link" , error);
 }
   }
 
@@ -50,6 +78,8 @@ try {
             blockchain, specify the amount, and transfer instantly.
           </p>
         </div>
+        {/* <div className="flex justify-center px-0 py-4">      <ConnectButton />
+</div> */}
         <div className="w-[350px] md:w-[455px] mx-auto pt-[34px] space-y-4 text-[16px]">
           <div className="">
             <label
@@ -63,10 +93,10 @@ try {
               id="walletaddress"
               className="bg-gray-800 border border-gray-700 rounded w-full h-[44px] p-2 text-white"
               placeholder="john@gmail.com"
-              value={address}
+              value={data.data.walletAddress}
+
               required
-              onChange={(e) => setAddress(e.target.value)}
-            />
+readonlu            />
           </div>
           <div className="">
             <label className="block text-sm font-medium" htmlFor="community">
@@ -98,9 +128,9 @@ try {
               id="amount"
               className="bg-gray-800 border border-gray-700 rounded w-full h-[44px] p-2 text-white"
               placeholder="00"
-              value={amount}
+              value={data.data.amount}
               required
-              onChange={(e) => setAmount(e.target.value)}
+            //   onChange={(e) => setAmount(e.target.value)}
             />
           </div>
           <div className=" py-3">
@@ -108,8 +138,7 @@ try {
               className="w-[350px] md:w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
               onClick={() => createWink()}
             >
-              Create Wink
-              <svg
+Transfer              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

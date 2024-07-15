@@ -5,8 +5,18 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { setUserData } from "../UserSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { ethers } from "ethers";
+import { useAccount, useEnsName } from 'wagmi'
+import {
+    useConnectModal,
+    useAccountModal,
+    useChainModal,
+  } from '@rainbow-me/rainbowkit';
+const MintToken = (data) => {
 
-const MintToken = () => {
+    const { openConnectModal } = useConnectModal();
+    const { openAccountModal } = useAccountModal();
+    const { openChainModal } = useChainModal();
   const router = useRouter();
   const userr = useSelector((state) => state.userdata);
   const dispatch = useDispatch();
@@ -15,30 +25,50 @@ const MintToken = () => {
   const [functionName, setFunctionName] = useState();
   const [blockchain, setBlockchain] = useState();
 
-  const createWink =async () => {
-    console.log("Address", address);
-    console.log("amount", abi);
-    console.log("chain", blockchain);
-    console.log("name",functionName);
-    
-    try {
-      const res = await axios.post("http://localhost:3001/create-link",{
-        contractAddress:address,
-        functionName:functionName,
-        chainDetails:blockchain,
-        abi:abi,
-        type:"2"
-      })
-    
-      console.log(res)
-      if(res.status === 200){
-        console.log(res.data);
-        dispatch(setUserData({ address: "SDgwegwefgwe", link: res.data.link, type: "2" }));
+  console.log("data",data);
 
-        router.push("/SuccessLink")
-      }
+  const createWink =async () => {
+    console.log("Address", data.data.contractAddress);
+    console.log("amount", abi);
+    console.log("chain", data.data.blockchain);
+    console.log("name",data.data.functionName);
+    const func = data.data.functionName;
+    try {
+        try {
+            if(!address){
+                openConnectModal()
+    
+            }
+        } catch (error) {
+            console.log("error");
+        }
+    
+        const provider = window.ethereum != null ? new ethers.providers.Web3Provider(window.ethereum) : ethers.providers.getDefaultProvider();
+        console.log("provider",provider)
+        
+            //signer
+        
+            const signer = provider.getSigner();
+        
+        console.log("signer",signer)
+    
+    
+
+        const contract = new ethers.Contract(data.data.contractAddress, data.data.abi, signer);
+console.log("con",contract);
+
+try {
+    const tx = await contract[func]("https://gateway.pinata.cloud/ipfs/QmUUaGU6c8H4mYdkGMJKRBMsaTg1A8HFHV15j6mLPPDWd9");
+
+    console.log("tx",tx);
+    await tx.wait();
+    alert("Transaction successful!");
+} catch (error) {
+    console.log("calleing eerror", error);
+}
+
     } catch (error) {
-      console.log("error in creating link", error);
+      console.log("error in creating link" , error);
     }
       }
 
@@ -66,9 +96,10 @@ const MintToken = () => {
               id="walletaddress"
               className="bg-gray-800 border border-gray-700 rounded w-full h-[44px] p-2 text-white"
               placeholder="0x123abc456def789ghi012jkl345mno678pqr901s"
-              value={address}
+              value={data.data.contractAddress}
               required
-              onChange={(e) => setAddress(e.target.value)}
+              readonly
+
             />
           </div>
           <div className="">
@@ -78,9 +109,9 @@ const MintToken = () => {
             <textarea
               id="amount"
               className="bg-gray-800 border border-gray-700 rounded w-full h-[120px] p-2 text-white"
-              value={abi}
+              value={data.data.abi}
               required
-              onChange={(e) => setAbi(e.target.value)}
+            readonly
             />
           </div>
           <div className="">
@@ -92,9 +123,9 @@ const MintToken = () => {
               id="amount"
               className="bg-gray-800 border border-gray-700 rounded w-full h-[44px] p-2 text-white"
               placeholder="00"
-              value={functionName}
+              value={data.data.functionName}
               required
-              onChange={(e) => setFunctionName(e.target.value)}
+              readonly
             />
           </div>
           <div className="">
@@ -104,10 +135,10 @@ const MintToken = () => {
             <select
               id="community"
               className="bg-gray-800 border border-gray-700 rounded w-full h-[44px] p-2 text-white"
-              value={blockchain}
-              onChange={(e) => setBlockchain(e.target.value)}
+              value={data.data.chainDetails}
               required
               defaultValue=" Ethereum"
+              readonly
             >
               <option value="" disabled>
                 Select Blockchain
@@ -117,6 +148,7 @@ const MintToken = () => {
               <option value="Polygon">Polygon</option>
               <option value="Degen">Degen</option>
               <option value="Base Sepolia">Base Sepolia</option>
+
             </select>
           </div>
           <div className=" py-3">
@@ -124,7 +156,7 @@ const MintToken = () => {
               className="w-[350px] md:w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center items-center"
               onClick={() => createWink()}
             >
-              Create Wink
+            Mint
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

@@ -3,14 +3,21 @@ import { useRouter } from "next/navigation";
 import HeaderLogo from "../../components/HeaderLogo";
 import HeadLogo from "../../assets/HeaderLogo.png";
 import Image from "next/image";
-import React from "react";
+import React,{useEffect} from "react";
 import Footer from "@/components/Footer";
+import { useSelector, useDispatch } from "react-redux";
 
 const SuccessLink = () => {
   const router = useRouter();
 
+  const userr = useSelector((state) => state.userdata);
+console.log("user",userr);
+  useEffect(()=>{
+
+  })
+
   const handleShareLink = () => {
-    const linkToCopy = "https://ultimatewinks/000001"; // Replace with your actual link
+    const linkToCopy = userr?.link; // Replace with your actual link
     navigator.clipboard.writeText(linkToCopy)
       .then(() => {
         console.log('Link copied to clipboard:', linkToCopy);
@@ -38,7 +45,7 @@ const SuccessLink = () => {
           <div className=" p-6">
             <Image alt="Header Logo" className=" w-[118px] h-[18px]" src={HeadLogo} />
             <p className=" text-[16px] font-bold pt-[30px]">
-              https://ultimatewinks/000001
+             {userr?.link}
             </p>
           </div>
         </div>
