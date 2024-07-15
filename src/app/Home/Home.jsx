@@ -20,7 +20,7 @@ const Home = () => {
         <div className="w-[350px] md:w-[455px] mx-auto pt-[34px] space-y-4 text-[16px] text-white font-bold">
           <button
             className="w-[350px] md:w-[455px] h-[48px] border-2 border-customBorder hover:bg-blue-950 rounded-[32px]"
-            onClick={() => router.push("/TransferCrypto")}
+            onClick={() => router.push("/TokenSelect")}
           >
             Transfer Crypto
           </button>
