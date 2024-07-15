@@ -13,6 +13,7 @@ const MintToken = () => {
   const [address, setAddress] = useState();
   const [abi, setAbi] = useState();
   const [functionName, setFunctionName] = useState();
+  const [tokenURI, setTokenURI] = useState();
   const [blockchain, setBlockchain] = useState();
 
   const createWink =async () => {
@@ -20,6 +21,7 @@ const MintToken = () => {
     console.log("amount", abi);
     console.log("chain", blockchain);
     console.log("name",functionName);
+    console.log("uri",tokenURI);
     
     try {
       const res = await axios.post("http://localhost:3001/create-link",{
@@ -27,6 +29,7 @@ const MintToken = () => {
         functionName:functionName,
         chainDetails:blockchain,
         abi:abi,
+        uri:tokenURI,
         type:"2"
       })
     
@@ -93,6 +96,20 @@ const MintToken = () => {
               className="bg-gray-800 border border-gray-700 rounded w-full h-[44px] p-2 text-white"
               placeholder="00"
               value={functionName}
+              required
+              onChange={(e) => setFunctionName(e.target.value)}
+            />
+          </div>
+          <div className="">
+            <label className="block text-sm font-medium" htmlFor="tokenuri">
+              Token URI
+            </label>
+            <input
+              type="text"
+              id="amount"
+              className="bg-gray-800 border border-gray-700 rounded w-full h-[44px] p-2 text-white"
+              placeholder="https://your-domain.com/metadata/{id}"
+              value={tokenURI}
               required
               onChange={(e) => setFunctionName(e.target.value)}
             />
