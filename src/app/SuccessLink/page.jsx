@@ -33,7 +33,7 @@ console.log("user",userr);
   return (
     <div className="bg-gradient-to-t from-customStart via-customStart to-blue-950 min-h-screen">
       <HeaderLogo />
-      <div className="items-center mx-auto pt-[16px]">
+      <div className="items-center mx-auto text-white pt-[16px]">
         <div className="text-center">
           <p className=" text-[24px] md:text-[30px] font-bold">Link Created Successfully!</p>
           <p className="pt-[8px] text-customFontColor md:w-[455px] mx-auto">

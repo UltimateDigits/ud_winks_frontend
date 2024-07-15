@@ -44,13 +44,13 @@ try {
       <HeaderLogo />
       <div className="items-center mx-auto pt-[16px]">
         <div className="text-center">
-          <p className=" text-[24px] md:text-[30px] font-bold">Transfer</p>
+          <p className=" text-[24px] text-white md:text-[30px] font-bold">Transfer</p>
           <p className="pt-[8px] text-customFontColor">
             Send cryptocurrency securely to any wallet address. Choose the
             blockchain, specify the amount, and transfer instantly.
           </p>
         </div>
-        <div className="w-[350px] md:w-[455px] mx-auto pt-[34px] space-y-4 text-[16px]">
+        <div className="w-[350px] md:w-[455px] mx-auto pt-[34px] text-white space-y-4 text-[16px]">
           <div className="">
             <label
               className="block text-sm font-medium"
