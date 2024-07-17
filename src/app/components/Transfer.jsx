@@ -62,6 +62,7 @@ try {
 
       console.log("tx",tx);
       await tx.wait();
+      
 } catch (error) {
   console.log("error in creating link" , error);
 }

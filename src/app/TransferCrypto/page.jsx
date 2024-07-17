@@ -18,6 +18,17 @@ const TransferCrypto = () => {
   const [blockchain, setBlockchain] = useState();
   const [showPopup, setShowPopup] = useState(false);
 
+
+  const tokens = {
+    base:{
+      usdc:"asfas",
+      usdt:"asdfsaf"
+    },
+    eth:{
+
+    }
+  }
+
   const handleClosePopup = () => {
     setShowPopup(false);
     router.push("/"); // Redirect to home after closing popup
@@ -46,7 +57,9 @@ const TransferCrypto = () => {
             type: "sdfsdfsdf", // Example type, replace with actual type from res.data if needed
           })
         );
-        setShowPopup(true); // Show the success popup
+
+        router.push("/SuccessLink")
+        // setShowPopup(true); // Show the success popup
       }
     } catch (error) {
       console.log("error in creating link");
@@ -105,6 +118,7 @@ const TransferCrypto = () => {
               <option value="Degen">Degen</option>
             </select>
           </div>
+       
 
           <div className="">
             <label className="block text-sm font-medium" htmlFor="amount">
