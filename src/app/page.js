@@ -33,8 +33,11 @@ export default function Page() {
 
 
   const getWink = async(search)=> {
+    console.log("sea", search);
     try {
-      const res  = await axios.get(`http://localhost:3001/get-link/${search}`)
+      const res  = await axios.get(`http://localhost:8080/winks/getWink/${search}`,{
+        uniqueId:search
+      })
 
       if(res.status === 200){
         console.log(res.data);

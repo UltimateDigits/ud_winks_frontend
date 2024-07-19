@@ -43,7 +43,7 @@ const TransferError = () => {
         <div className=" py-6">
           <button
             className="w-[350px] md:w-[455px] h-[48px] bg-customBorder border-2 border-customButtonStroke font-bold hover:bg-blue-900 rounded-[32px] flex justify-center mx-auto items-center"
-            onClick={() => router.push("/TransferCrypto")}
+            onClick={() => router.back()}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

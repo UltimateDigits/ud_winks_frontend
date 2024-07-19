@@ -40,7 +40,7 @@ const TransferCrypto = () => {
     console.log("chain", blockchain);
 
     try {
-      const res = await axios.post("http://localhost:3001/create-link", {
+      const res = await axios.post("http://localhost:8080/winks/createWink", {
         walletAddress: address,
         amount: amount,
         chainDetails: blockchain,

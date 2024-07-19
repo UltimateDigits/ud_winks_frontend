@@ -24,7 +24,7 @@ const MintToken = () => {
     console.log("uri",tokenURI);
     
     try {
-      const res = await axios.post("http://localhost:3001/create-link",{
+      const res = await axios.post("https://api.ultimatedigits.com/winks/createWink",{
         contractAddress:address,
         functionName:functionName,
         chainDetails:blockchain,

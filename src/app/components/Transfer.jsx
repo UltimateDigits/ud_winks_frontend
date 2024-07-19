@@ -51,7 +51,7 @@ try {
     
         //signer
     
-        const signer = provider.getSigner();
+const signer = provider.getSigner();
     
     console.log("signer",signer)
 
@@ -65,6 +65,7 @@ try {
       
 } catch (error) {
   console.log("error in creating link" , error);
+  router.push("/TransferError")
 }
   }
 
