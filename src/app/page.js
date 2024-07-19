@@ -35,7 +35,7 @@ export default function Page() {
   const getWink = async(search)=> {
     console.log("sea", search);
     try {
-      const res  = await axios.get(`http://localhost:8080/winks/getWink/${search}`,{
+      const res  = await axios.get(`https://api.ultimatedigits.com/winks/getWink/${search}`,{
         uniqueId:search
       })
 
