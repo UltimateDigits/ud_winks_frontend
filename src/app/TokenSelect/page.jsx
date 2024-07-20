@@ -22,7 +22,7 @@ const TokenSelect = () => {
                 Native Token
             </button>
             <button className=" w-[250px] h-[100px] md:h-[200px] bg-gradient-to-br hover:bg-gradient-to-tl from-customStart1 to-customEnd2 rounded hover:scale-95"
-            onClick={() => router.push("/TransferCrypto")}
+            onClick={() => router.push("/TransferNonNativeCrypto")}
             >
                 Non-native Token
             </button>

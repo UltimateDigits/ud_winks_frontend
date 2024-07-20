@@ -8,6 +8,7 @@ import { useSearchParams } from 'next/navigation';
 import axios from "axios";
 import TransferCrypto from "./components/Transfer";
 import MintToken from "./components/Mint";
+import TransferNonNative from "./components/TransferNonNative";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
@@ -73,7 +74,7 @@ export default function Page() {
       {/* <Analytics /> */}
       {/* {loading && <Loader />} */}
       <div className={loading ? "blur-sm" : ""}>
-      {wink ? setType === 1 && <TransferCrypto data={data} /> || setType === 2 && <MintToken data={data} /> :   <Home />}
+      {wink ? setType === 1 && <TransferCrypto data={data} /> || setType === 2 && <MintToken data={data} />  || setType === 3 && <TransferNonNative data={data} />:   <Home />}
       </div>
     </main>
   );
