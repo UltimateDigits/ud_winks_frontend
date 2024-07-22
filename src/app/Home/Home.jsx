@@ -30,12 +30,12 @@ const Home = () => {
           >
             Mint Tokens
           </button>
-          <button
+          {/* <button
             className="w-[350px] md:w-[455px] h-[48px] border-2 border-customBorder hover:bg-blue-950 rounded-[32px]"
             onClick={() => router.push("/SwapTokens")}
           >
             Swap Tokens
-          </button>
+          </button> */}
         </div>
       </div>
       <Footer />

@@ -46,7 +46,7 @@ const MintToken = () => {
       }
 
   return (
-    <div className="bg-gradient-to-t from-customStart via-customStart to-blue-950 min-h-screen">
+    <div className="bg-gradient-to-t from-customStart via-customStart to-blue-950 ">
       <HeaderLogo />
       <div className="items-center mx-auto pt-[16px]">
         <div className="text-center">

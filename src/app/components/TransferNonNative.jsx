@@ -21,7 +21,11 @@ import {
 
   import ethusdc from "./abis/ethusdc.json";
   import ethusdt from "./abis/ethusdt.json"
+import baseusdc from "./abis/baseusdc.json";
+import baseusdt from "./abis/baseusdt.json";
 
+import polygonusdc from "./abis/polygonusdc.json";
+import polygonusdt from "./abis/polygonusdt.json";
 
 const TransferNonNative = (data) => {
     const { openConnectModal } = useConnectModal();
@@ -82,6 +86,50 @@ const signer = provider.getSigner();
     if(data.data.blockchain === "eth") {
       if(data.data.tokenAddress === "usdc"){
         const contract = await new ethers.Contract(tokens[data.data.blockchain][data.data.tokenAddress], ethusdc, signer);
+        console.log("contract",contract);
+
+        const tx = await contract.transfer(data.data.walletAddress,data.data.amount )
+
+        console.log("tx",tx);
+      }
+      else if (data.data.tokenAddress === "usdt"){
+        const contract = await new ethers.Contract(tokens[data.data.blockchain][data.data.tokenAddress], ethusdt, signer);
+        console.log("contract",contract);
+
+        const tx = await contract.transfer(data.data.walletAddress,data.data.amount )
+
+        console.log("tx",tx);
+      }
+    }
+    else if(data.data.blockchain === "base") {
+      if(data.data.tokenAddress === "usdc"){
+        const contract = await new ethers.Contract(tokens[data.data.blockchain][data.data.tokenAddress], baseusdc, signer);
+        console.log("contract",contract);
+
+        const tx = await contract.transfer(data.data.walletAddress,data.data.amount )
+
+        console.log("tx",tx);
+      }
+      else if (data.data.tokenAddress === "usdt"){
+        const contract = await new ethers.Contract(tokens[data.data.blockchain][data.data.tokenAddress], baseusdt, signer);
+        console.log("contract",contract);
+
+        const tx = await contract.transfer(data.data.walletAddress,data.data.amount )
+
+        console.log("tx",tx);
+      }
+    }
+    else if(data.data.blockchain === "polygon") {
+      if(data.data.tokenAddress === "usdc"){
+        const contract = await new ethers.Contract(tokens[data.data.blockchain][data.data.tokenAddress], polygonusdc, signer);
+        console.log("contract",contract);
+
+        const tx = await contract.transfer(data.data.walletAddress,data.data.amount )
+
+        console.log("tx",tx);
+      }
+      else if (data.data.tokenAddress === "usdt"){
+        const contract = await new ethers.Contract(tokens[data.data.blockchain][data.data.tokenAddress], polygonusdt, signer);
         console.log("contract",contract);
 
         const tx = await contract.transfer(data.data.walletAddress,data.data.amount )
